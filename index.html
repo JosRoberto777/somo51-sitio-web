@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somos51.com | Unidos por tu Bienestar</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="Estilos/index.css">
+    </head>
+<body>
+
+    <div id="privacy-screen">
+        <div class="privacy-modal">
+            <img src="imagenes-somos51/147097a2-4bf4-41a5-8a3d-9f557a1f6e29.png" class="logo-img" alt="Logo Somos51">
+            <h2>Verificación Magisterial</h2>
+            <div class="privacy-scroll">
+                <strong>Somos51.com</strong> es la plataforma comercial oficial operada por <strong>P&R TABU S.A. de C.V.</strong> Al ingresar, usted acepta que el sistema gestione sus solicitudes mediante el modelo de <strong>pago vía descuento de nómina</strong>, garantizando la seguridad en la cobranza para nuestros socios comerciales.
+            </div>
+            <button class="btn-action" onclick="document.getElementById('privacy-screen').style.display='none'">ACEPTAR Y CONTINUAR</button>
+        </div>
+    </div>
+    <header>
+        <div class="logo-box">
+            <img src="imagenes-somos51/147097a2-4bf4-41a5-8a3d-9f557a1f6e29.png" alt="Somos51 Logo">
+            <div class="slogan-box">
+                <h2>SOMOS51.com</h2>
+                <span>Unidos por tu bienestar</span>
+            </div>
+        </div>
+
+        <div class="user-access">
+            <div style="text-align: right;">
+                <span style="display:block; font-size: 0.7rem; color: #888;">Bienvenido,</span>
+                Acceso Magisterial
+            </div>
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
+    <div class="hero">
+        <h1>La nueva forma de vender y comprar </h1>
+        <p>Un canal exclusivo para los agremiados del SNTE Sección 51.</p>
+        
+        <div class="region-card">
+            <label><i class="fas fa-map-marker-alt"></i> 1. SELECCIONA TU MICRORREGIÓN:</label>
+            <select id="region-filter" onchange="filterProducts()">
+                <option value="all">-- Mostrar Todo el Estado --</option>
+                <option value="xicotepec">Xicotepec (Sierra Norte)</option>
+                <option value="puebla">Puebla Capital (Centro)</option>
+                <option value="tehuacan">Tehuacán y Región</option>
+                <option value="cholula">Cholula / Atlixco</option>
+            </select>
+        </div>
+    </div>
+    <div class="showcase-container">
+        <div class="showcase-title">NUESTROS SOCIOS COMERCIALES</div>
+        
+        <div class="showcase-viewport">
+            <div class="showcase-slider-3d">
+                <div class="showcase-card-3d" data-index="0">
+                    <div class="showcase-front">
+                        <img src="imagenes proveedores/logo_honey_whale.png" class="showcase-logo dynamic-brand" alt="Logo Honey Whale">
+                    </div>
+                    <div class="showcase-back">
+                        <h4>HONEY WHALE</h4>
+                        <p>Micro-movilidad eléctrica mexicana.</p>
+                        <button class="btn-showcase" onclick="window.location.href='PaginaProveedores/ProveedorHoneyWhale.html?marca=honey-whale'">EXPLORAR CATÁLOGO</button>
+                    </div>
+                </div>
+
+                <div class="showcase-card-3d" data-index="1">
+                    <div class="showcase-front" style="background-color: #1575d6;">
+                        <img src="imagenes proveedores/Equipluss_logo.png" class="showcase-logo dynamic-brand" alt="logo Equipluss">
+                    </div>
+                    <div class="showcase-back">
+                        <h4>EQUIPLUSS</h4>
+                        <p>Sistemas de almacenamiento de agua y soluciones para el hogar y trabajo</p>
+                        <button class="btn-showcase" onclick="window.location.href='PaginaProveedoresEquipluss/ProveedorEquipluss.html?marca=equipluss'">EXPLORAR CATÁLOGO</button>
+                    </div>
+                </div>
+
+                <div class="showcase-card-3d" data-index="2">
+                    <div class="showcase-front" style="background-color: #002e5d;">
+                        <i class="fas fa-store fa-3x" style="color: white;"></i>
+                        <span class="provider-name" style="color: white;">PROXIMAMENTE</span>
+                    </div>
+                    <div class="showcase-back">
+                        <h4>Proximamente</h4>
+                        <p>...</p>
+                        <button class="btn-showcase">EXPLORAR</button>
+                    </div>
+                </div>
+
+                <div class="showcase-card-3d" data-index="3">
+                    <div class="showcase-front" style="background-color: #002e5d;">
+                        <i class="fas fa-credit-card fa-3x" style="color: rgb(255, 255, 255);"></i>
+                        <span class="provider-name" style="color: black;">PROXIMAMENTE</span>
+                    </div>
+                    <div class="showcase-back">
+                        <h4>Proximamente</h4>
+                        <p>...</p>
+                        <button class="btn-showcase">EXPLORAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="showcase-dots">
+            <span class="dot active" onclick="setSlide3D(0)"></span>
+            <span class="dot" onclick="setSlide3D(1)"></span>
+            <span class="dot" onclick="setSlide3D(2)"></span>
+            <span class="dot" onclick="setSlide3D(3)"></span>
+        </div>
+    </div>
+    <div class="container">
+        <div id="no-results" style="display:none; text-align:center; padding:50px; color:#999;">
+            <i class="fas fa-search fa-3x"></i>
+            <p>No hay convenios específicos para esta región por el momento.</p>
+        </div>
+
+        <div class="grid" id="product-grid"></div>
+    </div>
+
+
+    <a href="https://wa.me/XXXXXXXXXX" style="position:fixed; bottom:20px; right:20px; background:#25d366; color:white; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index:1000; text-decoration:none;">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="imagenes-somos51/147097a2-4bf4-41a5-8a3d-9f557a1f6e29.png" class="footer-logo" alt="Logo Somos51">
+                <p><strong>P&R TABU S.A. de C.V.</strong><br>Constituida desde 1997.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Fuerza Comercial</h4>
+                <p>• 56,000 Clientes potenciales</p>
+                <p>• 217 Municipios cubiertos</p>
+                <p>• 3,576 Planteles educativos</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto Administrativo</h4>
+                <p>Email: pr.tabusa@gmail.com</p>
+                <div style="font-size:1.5rem; color:var(--naranja-51);">
+                    <i class="fab fa-facebook"></i> &nbsp; <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+        </div>
+        <div class="legal-bar">
+            &copy; 2026 Somos51.com. Operado por P&R TABU bajo convenio con SNTE Sección 51.<br>
+            "Usted Vende y el Gobierno Cobra".
+        </div>
+    </footer>
+    <script>
+        // 1. FILTRADO POR MICRORREGIÓN
+        function filterProducts() {
+            const selectedRegion = document.getElementById('region-filter').value;
+            const cards = document.querySelectorAll('.card');
+            const noResults = document.getElementById('no-results');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const cardRegion = card.getAttribute('data-region');
+
+                if (selectedRegion === 'all' || cardRegion === selectedRegion || cardRegion === 'all') {
+                    card.style.display = 'flex'; // Cambiado a flex para mantener consistencia de las tarjetas rediseñadas
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
+        }
+    </script>
+
+    <script src="Productos Honey Wale.js"></script>
+
+    <script>
+        // 2. RENDERIZADO DINÁMICO DE TARJETAS CON IMÁGENES REALES
+        function cargarTarjetas() {
+            const grid = document.getElementById('product-grid');
+            if (!grid) return;
+            grid.innerHTML = ''; // Vaciar maquetas anteriores
+
+            productosDemo.forEach(prod => {
+                const tarjeta = `
+                    <div class="card" data-region="${prod.region}">
+                        <div class="card-image-box">
+                            <img src="${prod.imgPrincipal}" alt="${prod.nombre}" class="card-img">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-brand">SOCIO ${prod.proveedor.toUpperCase()}</span>
+                            <h3>${prod.nombre}</h3>
+                            <p>${prod.descripcion.substring(0, 80)}...</p>
+                            <div class="card-footer-action">
+                                <a href="ProductoInterfaz.html?id=${prod.id}" class="btn-action">
+                                    ME INTERESA <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += tarjeta;
+            });
+        }
+
+        // 3. LÓGICA DEL CARRUSEL EN PERSPECTIVA 3D
+        let activeIndex = 0;
+        let carouselTimer;
+
+        function updateCarousel3D() {
+            const cards3D = document.querySelectorAll('.showcase-card-3d');
+            const dots3D = document.querySelectorAll('.dot');
+            const totalCards = cards3D.length;
+
+            cards3D.forEach((card, i) => {
+                card.classList.remove('center', 'left', 'right');
+                
+                if (i === activeIndex) {
+                    card.classList.add('center');
+                } else if (i === (activeIndex - 1 + totalCards) % totalCards) {
+                    card.classList.add('left');
+                } else if (i === (activeIndex + 1) % totalCards) {
+                    card.classList.add('right');
+                }
+            });
+
+            dots3D.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === activeIndex);
+            });
+        }
+
+        function nextSlide3D() {
+            const cards3D = document.querySelectorAll('.showcase-card-3d');
+            if(cards3D.length > 0) {
+                activeIndex = (activeIndex + 1) % cards3D.length;
+                updateCarousel3D();
+            }
+        }
+
+        function setSlide3D(index) {
+            activeIndex = index;
+            updateCarousel3D();
+        }
+
+        function startCarouselTimer() {
+            carouselTimer = setInterval(nextSlide3D, 5000); // Rotación cada 5 segundos
+        }
+
+        function stopCarouselTimer() {
+            clearInterval(carouselTimer);
+        }
+
+        // 4. INICIALIZACIÓN UNIFICADA AL CARGAR EL DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel3D();
+            startCarouselTimer();
+            cargarTarjetas(); // Dispara el catálogo dinámico premium
+
+            const container3D = document.querySelector('.showcase-container');
+            if (container3D) {
+                container3D.addEventListener('mouseenter', stopCarouselTimer);
+                container3D.addEventListener('mouseleave', startCarouselTimer);
+            }
+        });
+    </script>
+</body>
+</html>
